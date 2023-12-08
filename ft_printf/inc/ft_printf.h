@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 14:42:50 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:08:28 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int		f_putchar(int c);
 int		f_format_c(va_list ap, t_flags *f);
 int		f_format_s(va_list ap, t_flags *f);
 int		f_format_d(va_list ap, t_flags *f);
+int		f_format_per(va_list ap, t_flags *f);
 
 #endif

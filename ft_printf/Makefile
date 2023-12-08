@@ -6,7 +6,7 @@
 #    By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 20:27:50 by galves-f          #+#    #+#              #
-#    Updated: 2023/12/08 14:40:42 by galves-f         ###   ########.fr        #
+#    Updated: 2023/12/08 15:14:31 by galves-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INCS = inc
 SRCS = ft_printf.c \
 		format_c.c \
 		format_s.c \
-		format_d.c
+		format_d.c \
+		format_per.c
 OBJS = $(SRCS:.c=.o)
 
 bonus : all
