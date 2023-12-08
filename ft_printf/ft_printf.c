@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:03:45 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:13:33 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:06:47 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	ft_printf(const char *format, ...)
 	formatters[STRING_SPEC] = &f_format_s;
 	formatters[CHAR_SPEC] = &f_format_c;
 	formatters[DECIMAL_SPEC] = &f_format_d;
+	formatters[HEX_LOWER_SPEC] = &f_format_x;
 	formatters[PERCENT_SPEC] = &f_format_per;
 	i = 0;
 	bwritten = 0;

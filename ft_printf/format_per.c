@@ -6,12 +6,11 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:08:38 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:11:26 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:38:27 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
-#include "libft/libft.h"
 
 int	f_format_per(va_list ap, t_flags *f)
 {

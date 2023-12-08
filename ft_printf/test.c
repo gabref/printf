@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:12:31 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:35:04 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	main(void)
 	r = ft_printf("same exact %c\n", 'c');
 	e = printf("same exact %c\n", 'c');
 	assert(e, r);
-	r = ft_printf("same exact %d, %d, %d\n", 42, -42, 1024);
-	e = printf("same exact %d, %d, %d\n", 42, -42, 1024);
+	r = ft_printf("same exact %d, %d, %d, %d\n", 0, 42, -42, 1024);
+	e = printf("same exact %d, %d, %d, %d\n", 0, 42, -42, 1024);
 	assert(e, r);
 	r = ft_printf("same exact %% text\n");
 	e = printf("same exact %% text\n");
+	assert(e, r);
+	r = ft_printf("same exact %x %x %x %x %x text\n", 0, 42, -42, 1024, -1);
+	e = printf("same exact %x %x %x %x %x text\n", 0, 42, -42, 1024, -1);
 	assert(e, r);
 	return (0);
 }

@@ -6,21 +6,23 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:43:54 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:06:25 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:43:14 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 #include "libft/libft.h"
 
-int	number_of_digits(int n)
+static int	get_digits(long n)
 {
 	int	digits;
 
 	digits = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
-		n = -n;
+		n *= -1;
 		digits++;
 	}
 	while (n)
@@ -39,7 +41,7 @@ int	f_format_d(va_list ap, t_flags *f)
 	(void)f;
 	bytes = 0;
 	n = va_arg(ap, int);
-	bytes = number_of_digits(n);
+	bytes = get_digits(n);
 	ft_putnbr_fd(n, 1);
 	return (bytes);
 }

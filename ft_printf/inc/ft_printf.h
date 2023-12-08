@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:08:28 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:35:26 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define HEX_BASE_LOWERCASE "0123456789abcdef"
+# define HEX_BASE_UPPERCASE "0123456789ABCDEF"
 
 enum	e_format_spec
 {
@@ -31,6 +34,11 @@ enum	e_format_spec
 	HEX_UPPER_SPEC,
 	PERCENT_SPEC,
 	INVALID_SPEC,
+};
+
+enum e_case {
+	UPPERCASE,
+	LOWERCASE,
 };
 
 /*
@@ -49,6 +57,7 @@ typedef struct s_flags
 	int	hash;
 	int	plus;
 	int	space;
+	int letter_case;
 }		t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -58,5 +67,6 @@ int		f_format_c(va_list ap, t_flags *f);
 int		f_format_s(va_list ap, t_flags *f);
 int		f_format_d(va_list ap, t_flags *f);
 int		f_format_per(va_list ap, t_flags *f);
+int		f_format_x(va_list ap, t_flags *f);
 
 #endif
