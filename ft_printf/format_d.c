@@ -6,12 +6,11 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:43:54 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 15:43:14 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:52:29 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
-#include "libft/libft.h"
 
 static int	get_digits(long n)
 {

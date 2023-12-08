@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 16:35:26 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:24:00 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ enum	e_format_spec
 	INVALID_SPEC,
 };
 
-enum e_case {
+enum	e_case
+{
 	UPPERCASE,
 	LOWERCASE,
 };
@@ -48,6 +49,7 @@ enum e_case {
    hash 			= '#'
    plus 			= '+'
    splace 			= ' '
+   letter_case
 */
 typedef struct s_flags
 {
@@ -57,7 +59,7 @@ typedef struct s_flags
 	int	hash;
 	int	plus;
 	int	space;
-	int letter_case;
+	int	letter_case;
 }		t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -68,5 +70,6 @@ int		f_format_s(va_list ap, t_flags *f);
 int		f_format_d(va_list ap, t_flags *f);
 int		f_format_per(va_list ap, t_flags *f);
 int		f_format_x(va_list ap, t_flags *f);
+int		f_format_u(va_list ap, t_flags *f);
 
 #endif
