@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 19:58:30 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 23:09:59 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,33 @@ void	test_d(void)
 	r = ft_printf("same exact %d, %d, %d, %d\n", 0, 42, -42, 1024);
 	e = printf("same exact %d, %d, %d, %d\n", 0, 42, -42, 1024);
 	assert(e, r);
+
+	/*
+	r = ft_printf(" %-9d \n", INT_MAX);
+	e = printf(" %-9d \n", INT_MAX);
+	assert(e, r);
+	r = ft_printf(" %-10d \n", INT_MIN);
+	e = printf(" %-10d \n", INT_MIN);
+	assert(e, r);
+	r = ft_printf(" %-11d \n", (int)LONG_MAX);
+	e = printf(" %-11d \n", (int)LONG_MAX);
+	assert(e, r);
+	r = ft_printf(" %-12d \n", (int)LONG_MIN);
+	e = printf(" %-12d \n", (int)LONG_MIN);
+	assert(e, r);
+	r = ft_printf(" %-13d \n", (int)UINT_MAX);
+	e = printf(" %-13d \n", (int)UINT_MAX);
+	assert(e, r);
+	r = ft_printf(" %-14d \n", (int)ULONG_MAX);
+	e = printf(" %-14d \n", (int)ULONG_MAX);
+	assert(e, r);
+	r = ft_printf(" %-15d \n", (int)9223372036854775807LL);
+	e = printf(" %-15d \n", (int)9223372036854775807LL);
+	assert(e, r);
+	r = ft_printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d\n", INT_MAX, INT_MIN, (int)LONG_MAX, (int)LONG_MIN, (int)ULONG_MAX, 0, -42);
+	e = printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d\n", INT_MAX, INT_MIN, (int)LONG_MAX, (int)LONG_MIN, (int)ULONG_MAX, 0, -42);
+	assert(e, r);
+	*/
 }
 
 void	test_i(void)
@@ -141,6 +168,58 @@ void	test_u(void)
 	ft_printf("Testing %%u\n\n");
 	r = ft_printf("same exact %u %u %u %u %u text\n", 0, 42, -42, 1024, -1);
 	e = printf("same exact %u %u %u %u %u text\n", 0, 42, -42, 1024, -1);
+	assert(e, r);
+
+	r = ft_printf(" %-3u \n", 1);
+	e = printf(" %-3u \n", 1);
+	assert(e, r);
+	r = ft_printf(" %-2u \n", -10);
+	e = printf(" %-2u \n", -10);
+	assert(e, r);
+	r = ft_printf(" %-3u \n", -11);
+	e = printf(" %-3u \n", -11);
+	assert(e, r);
+	r = ft_printf(" %-4u \n", -14);
+	e = printf(" %-4u \n", -14);
+	assert(e, r);
+	r = ft_printf(" %-5u \n", -15);
+	e = printf(" %-5u \n", -15);
+	assert(e, r);
+	r = ft_printf(" %-6u \n", -16);
+	e = printf(" %-6u \n", -16);
+	assert(e, r);
+	r = ft_printf(" %-1u \n", -99);
+	e = printf(" %-1u \n", -99);
+	assert(e, r);
+	r = ft_printf(" %-2u \n", -100);
+	e = printf(" %-2u \n", -100);
+	assert(e, r);
+	r = ft_printf(" %-3u \n", -101);
+	e = printf(" %-3u \n", -101);
+	assert(e, r);
+	r = ft_printf(" %-9u \n", INT_MAX);
+	e = printf(" %-9u \n", INT_MAX);
+	assert(e, r);
+	r = ft_printf(" %-10u \n", INT_MIN);
+	e = printf(" %-10u \n", INT_MIN);
+	assert(e, r);
+	r = ft_printf(" %-11u \n", LONG_MAX);
+	e = printf(" %-11u \n", (unsigned int)LONG_MAX);
+	assert(e, r);
+	r = ft_printf(" %-12u \n", LONG_MIN);
+	e = printf(" %-12u \n", LONG_MIN);
+	assert(e, r);
+	r = ft_printf(" %-13u \n", UINT_MAX);
+	e = printf(" %-13u \n", UINT_MAX);
+	assert(e, r);
+	r = ft_printf(" %-14u \n", ULONG_MAX);
+	e = printf(" %-14u \n", ULONG_MAX);
+	assert(e, r);
+	r = ft_printf(" %-15u \n", 9223372036854775807LL);
+	e = printf(" %-15u \n", (unsigned int)9223372036854775807LL);
+	assert(e, r);
+	r = ft_printf(" %-9u %-10u %-11u %-12u %-13u %-14u %-15u\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	e = printf(" %-9u %-10u %-11u %-12u %-13u %-14u %-15u\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	assert(e, r);
 }
 
@@ -212,9 +291,9 @@ int	main(void)
 	// test_c();
 	// test_s();
 	// test_p();
-	test_d();
+	// test_d();
 	// test_i();
-	// test_u();
+	test_u();
 	// test_x();
 	// test_per();
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 19:51:48 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 22:58:36 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEX_BASE_LOWERCASE "0123456789abcdef"
 # define HEX_BASE_UPPERCASE "0123456789ABCDEF"
 # define H_INT_MAX 2147483647
-# define H_INT_MIN -2147483648
+# define H_INT_MIN -2147483648L
 # define H_LONG_MIN 9223372036854775808UL
 # define H_ULONG_MAX 18446744073709551615UL
 
