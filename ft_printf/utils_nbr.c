@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   utils_nbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/05 15:29:34 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 19:00:56 by galves-f         ###   ########.fr       */
+/*   Created: 2023/12/09 18:30:43 by galves-f          #+#    #+#             */
+/*   Updated: 2023/12/09 19:57:13 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "inc/ft_printf.h"
+#include "libft/libft.h"
 
-static int	get_digits(long n)
+int	get_digits(long n)
 {
 	int	digits;
 
@@ -32,29 +33,24 @@ static int	get_digits(long n)
 	return (digits);
 }
 
-char	*ft_itoa(int n)
+int	f_putnbr(long n, int bytes)
 {
+	int		count;
 	char	*nstr;
-	int		len;
-	long	ln;
 
-	ln = (long)n;
-	len = get_digits(ln);
-	nstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (nstr == NULL)
-		return (NULL);
-	if (ln == 0)
-		nstr[0] = '0';
-	if (ln < 0)
+	count = 0;
+	if (n == H_INT_MIN)
+		n = (long)(H_INT_MIN * -1);
+	else if (n < 0)
 	{
-		ln *= -1;
-		nstr[0] = '-';
+		count += f_putchar('-');
+		n *= -1;
+		bytes--;
 	}
-	nstr[len] = '\0';
-	while (ln)
-	{
-		nstr[--len] = ln % 10 + 48;
-		ln /= 10;
-	}
-	return (nstr);
+	count += pad_char('0', bytes - get_digits(n));
+	nstr = ft_itoa(n);
+	ft_putstr_fd(nstr, 1);
+	count += ft_strlen(nstr);
+	free(nstr);
+	return (count);
 }

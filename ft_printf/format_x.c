@@ -6,80 +6,27 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:43:25 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 10:18:47 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:13:45 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-int	get_digits_base(long n, int base)
+int	justify_x(unsigned int n, int len, t_flags *f, char *symbols)
 {
-	int	digits;
-
-	digits = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	if (f->left_justify)
 	{
-		n *= -1;
-		digits++;
+		ft_putnbr_base(n, symbols);
+		pad_char(' ', f->width - len);
 	}
-	while (n)
+	else
 	{
-		n /= base;
-		digits++;
+		pad_char(' ', f->width - len);
+		ft_putnbr_base(n, symbols);
 	}
-	return (digits);
-}
-
-int	ft_double_char(char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (*(str + i))
-	{
-		j = i + 1;
-		while (*(str + j))
-		{
-			if (*(str + i) == *(str + j))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-void	ft_putnbr_base_print(long n_long, int base_value, char *symbols)
-{
-	if (n_long < 0)
-	{
-		n_long = -n_long;
-		ft_putchar_fd('-', 1);
-	}
-	if (n_long >= base_value)
-		ft_putnbr_base_print(n_long / base_value, base_value, symbols);
-	ft_putchar_fd(symbols[n_long % base_value], 1);
-}
-
-void	ft_putnbr_base(long nbr, char *base)
-{
-	int	base_value;
-
-	base_value = 0;
-	while (base[base_value])
-	{
-		if (base[base_value] == '+' || base[base_value] == '-')
-			return ;
-		++base_value;
-	}
-	if (base_value < 2)
-		return ;
-	if (ft_double_char(base))
-		return ;
-	ft_putnbr_base_print(nbr, base_value, base);
+	if (len < f->width)
+		return (f->width);
+	return (len);
 }
 
 int	f_format_x(va_list ap, t_flags *f)
@@ -87,12 +34,10 @@ int	f_format_x(va_list ap, t_flags *f)
 	int				bytes;
 	unsigned int	n;
 
-	(void)f;
 	n = va_arg(ap, unsigned int);
 	if (f->letter_case == LOWERCASE)
-		ft_putnbr_base(n, HEX_BASE_LOWERCASE);
+		bytes = justify_x(n, get_digits_base(n, 16), f, HEX_BASE_LOWERCASE);
 	else
-		ft_putnbr_base(n, HEX_BASE_UPPERCASE);
-	bytes = get_digits_base(n, 16);
+		bytes = justify_x(n, get_digits_base(n, 16), f, HEX_BASE_UPPERCASE);
 	return (bytes);
 }

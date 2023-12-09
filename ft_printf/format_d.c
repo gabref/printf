@@ -6,41 +6,45 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:43:54 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 16:52:29 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:48:13 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-static int	get_digits(long n)
+int	justify_d(long n, int len, t_flags *f)
 {
-	int	digits;
+	int	bwritten;
 
-	digits = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	bwritten = 0;
+	if (f->is_zero_pad)
 	{
-		n *= -1;
-		digits++;
+		bwritten += f_putnbr(n, f->width);
 	}
-	while (n)
+	else
 	{
-		n /= 10;
-		digits++;
+		if (f->left_justify)
+		{
+			bwritten += f_putnbr(n, len);
+			bwritten += pad_char(' ', f->width - len);
+		}
+		else
+		{
+			bwritten += pad_char(' ', f->width - len);
+			bwritten += f_putnbr(n, len);
+		}
 	}
-	return (digits);
+	return (bwritten);
 }
 
 int	f_format_d(va_list ap, t_flags *f)
 {
 	int	bytes;
-	int	n;
+	long	n;
 
 	(void)f;
 	bytes = 0;
-	n = va_arg(ap, int);
-	bytes = get_digits(n);
-	ft_putnbr_fd(n, 1);
+	n = (long)va_arg(ap, int);
+	bytes = justify_d(n, get_digits(n), f);
 	return (bytes);
 }

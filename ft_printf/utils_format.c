@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_s.c                                         :+:      :+:    :+:   */
+/*   format_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 20:22:07 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 15:11:20 by galves-f         ###   ########.fr       */
+/*   Created: 2023/12/09 15:27:53 by galves-f          #+#    #+#             */
+/*   Updated: 2023/12/09 16:40:17 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-int	f_format_s(va_list ap, t_flags *f)
+int	pad_char(char c, int bytes)
 {
-	char	*str;
-	int		len;
-	int		i;
+	int	count;
 
-	str = va_arg(ap, char *);
-	if (str == NULL)
-		str = "(null)";
-	len = ft_strlen(str);
-	if (f->width > len)
+	count = 0;
+	while (bytes-- > 0)
 	{
-		i = 0;
-		if (!f->left_justify)
-			while (i++ < f->width - len)
-				ft_putchar_fd(' ', 1);
-		ft_putstr_fd(str, 1);
-		if (f->left_justify)
-			while (i++ < f->width - len)
-				ft_putchar_fd(' ', 1);
-		return (f->width);
+		ft_putchar_fd(c, 1);
+		count++;
 	}
-	ft_putstr_fd(str, 1);
-	return (len);
+	return (count);
 }
