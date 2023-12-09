@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 17:24:00 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:05:01 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ enum	e_case
    plus 			= '+'
    splace 			= ' '
    letter_case
+   specifier
 */
 typedef struct s_flags
 {
@@ -60,6 +61,7 @@ typedef struct s_flags
 	int	plus;
 	int	space;
 	int	letter_case;
+	int	specifier;
 }		t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -71,5 +73,9 @@ int		f_format_d(va_list ap, t_flags *f);
 int		f_format_per(va_list ap, t_flags *f);
 int		f_format_x(va_list ap, t_flags *f);
 int		f_format_u(va_list ap, t_flags *f);
+
+void	map_conv_spec(char specifier, t_flags *f);
+void	start_flags(t_flags *f);
+int		map_flags(const char *str, t_flags *f);
 
 #endif

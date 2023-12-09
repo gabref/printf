@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/08 16:51:54 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:39:47 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	main(void)
 	r = ft_printf("same exact %u %u %u %u %u text\n", 0, 42, -42, 1024, -1);
 	e = printf("same exact %u %u %u %u %u text\n", 0, 42, -42, 1024, -1);
 	assert(e, r);
+	printf("test %i %i %i %i %i %li %lli\n", 42, 0x2a, 052, 0b101010, 42u, 42l, 42ll);
 	return (0);
 }
