@@ -6,7 +6,7 @@
 #    By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 20:27:50 by galves-f          #+#    #+#              #
-#    Updated: 2023/12/08 19:32:29 by galves-f         ###   ########.fr        #
+#    Updated: 2023/12/09 10:29:26 by galves-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCS = inc
 SRCS = ft_printf.c \
 		format_c.c \
 		format_s.c \
+		format_p.c \
 		format_d.c \
 		format_x.c \
 		format_u.c \

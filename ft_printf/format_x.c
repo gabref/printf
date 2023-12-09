@@ -6,13 +6,13 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:43:25 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 10:00:41 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:18:47 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-static int	get_digits_base(long n, int base)
+int	get_digits_base(long n, int base)
 {
 	int	digits;
 

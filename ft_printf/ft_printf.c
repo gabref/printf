@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:03:45 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 10:05:45 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:43:29 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int	ft_printf(const char *format, ...)
 	int		bwritten;
 	int		(*formatters[9])(va_list, t_flags *);
 
-	formatters[STRING_SPEC] = &f_format_s;
 	formatters[CHAR_SPEC] = &f_format_c;
+	formatters[STRING_SPEC] = &f_format_s;
+	formatters[POINTER_SPEC] = &f_format_p;
 	formatters[DECIMAL_SPEC] = &f_format_d;
+	formatters[INTEGER_SPEC] = &f_format_d;
 	formatters[UNS_DECIMAL_SPEC] = &f_format_u;
 	formatters[HEX_LOWER_SPEC] = &f_format_x;
 	formatters[HEX_UPPER_SPEC] = &f_format_x;

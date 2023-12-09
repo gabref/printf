@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:25:42 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 10:08:46 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:40:28 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int	map_flags(const char *str, t_flags *f)
 			f->space = 1;
 		i++;
 	}
-	while (str[i] && isspecifier(str[i]))
+	/* change to while to make it accepts more specifiers, TODO: add priority */
+	if (str[i] && isspecifier(str[i]))
 		map_conv_spec(str[i++], f);
 	return (--i);
 }
