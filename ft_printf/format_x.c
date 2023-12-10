@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:43:25 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 17:13:45 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/10 00:10:12 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 
 int	justify_x(unsigned int n, int len, t_flags *f, char *symbols)
 {
-	if (f->left_justify)
-	{
-		ft_putnbr_base(n, symbols);
-		pad_char(' ', f->width - len);
-	}
+	int	bwritten;
+
+	bwritten = 0;
+	if (f->is_zero_pad)
+		bwritten += ft_putnbr_base(n, symbols, f->width);
 	else
 	{
-		pad_char(' ', f->width - len);
-		ft_putnbr_base(n, symbols);
+		if (f->left_justify)
+		{
+			bwritten += ft_putnbr_base(n, symbols, len);
+			bwritten += pad_char(' ', f->width - len);
+		}
+		else
+		{
+			bwritten += pad_char(' ', f->width - len);
+			bwritten += ft_putnbr_base(n, symbols, len);
+		}
 	}
-	if (len < f->width)
-		return (f->width);
-	return (len);
+	return (bwritten);
 }
 
 int	f_format_x(va_list ap, t_flags *f)

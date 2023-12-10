@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 22:58:36 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/10 00:23:34 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ int		f_format_per(va_list ap, t_flags *f);
 /* utils */
 int		f_putchar(int c);
 int		f_putnbr(long n, int bytes);
+int		f_putnbr_unsigned(unsigned long n, int bytes);
 int		get_digits(long n);
-void	ft_putnbr_base(unsigned long nbr, char *base);
+int		get_digits_unsigned(unsigned long n);
+int		ft_putnbr_base(unsigned long nbr, char *base, int bytes);
 int		get_digits_base(unsigned long n, int base);
 
 /* flag utils */

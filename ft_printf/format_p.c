@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:13:37 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 16:37:53 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/10 00:12:23 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	justify_p(unsigned long pv, int len, t_flags *f)
 	if (f->left_justify)
 	{
 		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(pv, HEX_BASE_LOWERCASE);
+		ft_putnbr_base(pv, HEX_BASE_LOWERCASE, len - 2);
 		pad_char(' ', f->width - len);
 	}
 	else
 	{
 		pad_char(' ', f->width - len);
 		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(pv, HEX_BASE_LOWERCASE);
+		ft_putnbr_base(pv, HEX_BASE_LOWERCASE, len - 2);
 	}
 	if (len < f->width)
 		return (f->width);
