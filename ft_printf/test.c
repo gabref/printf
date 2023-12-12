@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 10:41:08 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:47:39 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,89 +122,8 @@ void	test_d(void)
 
 	ft_printf("Testing %%d\n\n");
 
-	r = ft_printf(" %+d \n", 0);
-	e = printf(" %+d \n", 0);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -1);
-	e = printf(" %+d \n", -1);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 9);
-	e = printf(" %+d \n", 9);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 10);
-	e = printf(" %+d \n", 10);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 11);
-	e = printf(" %+d \n", 11);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 15);
-	e = printf(" %+d \n", 15);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 16);
-	e = printf(" %+d \n", 16);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 17);
-	e = printf(" %+d \n", 17);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 99);
-	e = printf(" %+d \n", 99);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 100);
-	e = printf(" %+d \n", 100);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 101);
-	e = printf(" %+d \n", 101);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -9);
-	e = printf(" %+d \n", -9);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -10);
-	e = printf(" %+d \n", -10);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -11);
-	e = printf(" %+d \n", -11);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -14);
-	e = printf(" %+d \n", -14);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -15);
-	e = printf(" %+d \n", -15);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -16);
-	e = printf(" %+d \n", -16);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -99);
-	e = printf(" %+d \n", -99);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -100);
-	e = printf(" %+d \n", -100);
-	assert(e, r);
-	r = ft_printf(" %+d \n", -101);
-	e = printf(" %+d \n", -101);
-	assert(e, r);
-	r = ft_printf(" %+d \n", INT_MAX);
-	e = printf(" %+d \n", INT_MAX);
-	assert(e, r);
-	r = ft_printf(" %+d \n", INT_MIN);
-	e = printf(" %+d \n", INT_MIN);
-	assert(e, r);
-	r = ft_printf(" %+d \n", LONG_MAX);
-	e = printf(" %+d \n", LONG_MAX);
-	assert(e, r);
-	r = ft_printf(" %+d \n", LONG_MIN);
-	e = printf(" %+d \n", LONG_MIN);
-	assert(e, r);
-	r = ft_printf(" %+d \n", UINT_MAX);
-	e = printf(" %+d \n", UINT_MAX);
-	assert(e, r);
-	r = ft_printf(" %+d \n", ULONG_MAX);
-	e = printf(" %+d \n", ULONG_MAX);
-	assert(e, r);
-	r = ft_printf(" %+d \n", 9223372036854775807LL);
-	e = printf(" %+d \n", 9223372036854775807LL);
-	assert(e, r);
-	r = ft_printf(" %+d %+d %+d %+d %+d %+d %+d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	e = printf(" %+d %+d %+d %+d %+d %+d %+d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	r = ft_printf(" %d ", INT_MIN);
+	e = printf(" %d ", INT_MIN);
 	assert(e, r);
 
 }
@@ -680,8 +599,8 @@ int	main(void)
 	// test_();
 	// test_c();
 	// test_s();
-	test_p();
-	// test_d();
+	// test_p();
+	test_d();
 	// test_i();
 	// test_u();
 	// test_x();

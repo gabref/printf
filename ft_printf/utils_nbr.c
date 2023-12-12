@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:30:43 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 10:35:35 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:59:40 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	f_putnbr(long n, int bytes, t_flags *f)
 		i++;
 	if (f->space && n >= 0)
 		count += f_putchar(' ');
-	if (f->plus && n >= 0)
+	else if (f->plus && n >= 0)
 		count += f_putchar('+');
 	if (n < 0)
 	{
@@ -69,15 +69,14 @@ int	f_putnbr(long n, int bytes, t_flags *f)
 	}
 	count += pad_char('0', bytes - get_digits(n));
 	nstr = ft_itoa(n);
-	ft_putstr_fd(&nstr[i], 1);
-	count += ft_strlen(&nstr[i]);
+	count += f_putstr(&nstr[i]);
 	free(nstr);
 	return (count);
 }
 
 int	f_putnbr_unsigned(unsigned long n, int bytes)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	count += pad_char('0', bytes - get_digits_unsigned(n));

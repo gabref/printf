@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 10:39:19 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:46:05 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int		get_digits_unsigned(unsigned long n);
 int		f_putnbr_base(unsigned long nbr, int bytes, t_flags *f);
 int		get_digits_base(unsigned long n, int base);
 int		f_putstr(char *str);
+void	config_lengths(long n, int len, int *num_len, int *pad_len, t_flags *f);
+void	config_lengths_u(int len, int *num_len, int *pad_len, t_flags *f);
+int		flag_handler_number(long n, int len, t_flags *f);
 
 /* flag utils */
 void	map_conv_spec(char specifier, t_flags *f);
