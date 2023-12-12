@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 11:46:05 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:46:24 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define H_LONG_MIN 9223372036854775808UL
 # define H_ULONG_MAX 18446744073709551615UL
 
-enum	e_format_spec
+enum		e_format_spec
 {
 	CHAR_SPEC,
 	STRING_SPEC,
@@ -41,7 +41,7 @@ enum	e_format_spec
 	INVALID_SPEC,
 };
 
-enum	e_case
+enum		e_case
 {
 	UPPERCASE,
 	LOWERCASE,
@@ -54,56 +54,60 @@ enum	e_case
    hash 			= '#'
    plus 			= '+'
    splace 			= ' '
-   letter_case
-   specifier
 */
 typedef struct s_flags
 {
-	int	left_justify;
-	int	zero_pad;
-	int	precision;
-	int	hash;
-	int	plus;
-	int	space;
-	int	width;
-	int	specifier;
-	int	letter_case;
-	int	is_zero_pad;
-	int	precision_value;
-}		t_flags;
+	int		left_justify;
+	int		zero_pad;
+	int		precision;
+	int		hash;
+	int		plus;
+	int		space;
+	int		width;
+	int		specifier;
+	int		letter_case;
+	int		is_zero_pad;
+	int		precision_value;
+}			t_flags;
 
-int		ft_printf(const char *format, ...);
+typedef int	(*t_pn)(long, int, t_flags *);
+
+typedef struct s_lengths
+{
+	int		num_len;
+	int		pad_len;
+}			t_lengths;
+
+/* main function */
+int			ft_printf(const char *format, ...);
 
 /* format functions */
-int		f_format_c(va_list ap, t_flags *f);
-int		f_format_s(va_list ap, t_flags *f);
-int		f_format_d(va_list ap, t_flags *f);
-int		f_format_x(va_list ap, t_flags *f);
-int		f_format_u(va_list ap, t_flags *f);
-int		f_format_p(va_list ap, t_flags *f);
-int		f_format_per(va_list ap, t_flags *f);
+int			f_format_c(va_list ap, t_flags *f);
+int			f_format_s(va_list ap, t_flags *f);
+int			f_format_d(va_list ap, t_flags *f);
+int			f_format_x(va_list ap, t_flags *f);
+int			f_format_u(va_list ap, t_flags *f);
+int			f_format_p(va_list ap, t_flags *f);
+int			f_format_per(va_list ap, t_flags *f);
 
 /* utils */
-int		f_putchar(int c);
-int		f_putnbr(long n, int bytes, t_flags *f);
-int		f_putnbr_unsigned(unsigned long n, int bytes);
-int		get_digits(long n);
-int		get_digits_unsigned(unsigned long n);
-int		f_putnbr_base(unsigned long nbr, int bytes, t_flags *f);
-int		get_digits_base(unsigned long n, int base);
-int		f_putstr(char *str);
-void	config_lengths(long n, int len, int *num_len, int *pad_len, t_flags *f);
-void	config_lengths_u(int len, int *num_len, int *pad_len, t_flags *f);
-int		flag_handler_number(long n, int len, t_flags *f);
+int			f_putchar(int c);
+int			f_putstr(char *str);
+int			pad_char(char c, int bytes);
+int			size_of_string(char *str, t_flags *f);
+
+/* number utils */
+int			f_putnbr(long n, int bytes, t_flags *f);
+int			f_putnbr_base(long nbr, int bytes, t_flags *f);
+int			f_putnbr_unsigned(long n, int bytes, t_flags *f);
+int			get_digits(long n);
+int			get_digits_base(unsigned long n, int base);
+int			get_digits_unsigned(unsigned long n);
 
 /* flag utils */
-void	map_conv_spec(char specifier, t_flags *f);
-void	start_flags(t_flags *f);
-int		map_flags(const char *str, t_flags *f);
-
-/* format utils */
-int		pad_char(char c, int bytes);
-
-int		size_of_string(char *str, t_flags *f);
+int			map_flags(const char *str, t_flags *f);
+int			flag_handler_number(long n, int len, t_flags *f, t_pn pn);
+void		map_conv_spec(char specifier, t_flags *f);
+void		start_flags(t_flags *f);
 
 #endif

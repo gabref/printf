@@ -6,13 +6,13 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:21:17 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/09 18:39:38 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:44:21 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-void	justify_c(t_flags *f, char c)
+void	flag_handler_c(t_flags *f, char c)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	f_format_c(va_list ap, t_flags *f)
 	int		bwritten;
 
 	c = va_arg(ap, int);
-	justify_c(f, c);
+	flag_handler_c(f, c);
 	bwritten = 1;
 	if (f->width)
 		bwritten = f->width;

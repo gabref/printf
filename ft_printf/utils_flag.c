@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:25:42 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 11:18:55 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:03:06 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,11 @@ int	isspecifier(char c)
 
 void	parse_digits(char c, t_flags *f)
 {
-	// else if (str[i] == '0')
-	// 	f->zero_pad = 1;
 	if (c == '0' && !f->width && !f->precision)
 		f->is_zero_pad = 1;
-	else if(c == '0' && f->width && !f->precision)
+	else if (c == '0' && f->width && !f->precision)
 		f->width *= 10;
-	else if(c == '0' && f->precision)
+	else if (c == '0' && f->precision)
 		f->precision_value *= 10;
 	else if (ft_isdigit(c))
 	{

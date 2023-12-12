@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:06:30 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 11:11:52 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:35:08 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ int	f_putnbr_base_print(unsigned long n_long, unsigned long base_value,
 	return (count);
 }
 
-int	f_putnbr_base(unsigned long nbr, int bytes, t_flags *f)
+int	f_putnbr_base(long nbr, int bytes, t_flags *f)
 {
 	unsigned long	base_value;
 	int				count;
 	char			*base;
+	unsigned long	n;
 
+	n = (unsigned long)nbr;
 	base = HEX_BASE_LOWERCASE;
 	if (f->letter_case == UPPERCASE)
 		base = HEX_BASE_UPPERCASE;
@@ -90,14 +92,14 @@ int	f_putnbr_base(unsigned long nbr, int bytes, t_flags *f)
 	if (base_value == 0)
 		return (0);
 	count = 0;
-	if (f->hash && nbr != 0)
+	if (f->hash && n != 0)
 	{
 		if (f->letter_case == LOWERCASE)
 			count += f_putstr("0x");
 		else
 			count += f_putstr("0X");
 	}
-	count += pad_char('0', bytes - get_digits_base(nbr, 16));
-	count += f_putnbr_base_print(nbr, base_value, base);
+	count += pad_char('0', bytes - get_digits_base(n, 16));
+	count += f_putnbr_base_print(n, base_value, base);
 	return (count);
 }

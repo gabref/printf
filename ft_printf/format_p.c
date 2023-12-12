@@ -6,15 +6,17 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:13:37 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 10:42:30 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:01:57 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-int	justify_p(unsigned long pv, int len, t_flags *f)
+int	flag_handler_pointer(unsigned long pv, int len, t_flags *f)
 {
-	int bwritten = 0;
+	int	bwritten;
+
+	bwritten = 0;
 	if (f->left_justify)
 	{
 		bwritten += f_putnbr_base(pv, len - 2, f);
@@ -44,6 +46,6 @@ int	f_format_p(va_list ap, t_flags *f)
 	f->hash = 1;
 	p_value = (unsigned long)p;
 	len = get_digits_base(p_value, 16) + 2;
-	bwritten = justify_p(p_value, len, f);
+	bwritten = flag_handler_pointer(p_value, len, f);
 	return (bwritten);
 }

@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:22:07 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 09:30:32 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:52:49 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	precision_s(char *str, t_flags *f)
 		return (f_putstr(str));
 }
 
-int	justify_s(char *str, int len, t_flags *f)
+int	flag_handler_s(char *str, int len, t_flags *f)
 {
 	int	bwritten;
 
@@ -66,6 +66,6 @@ int	f_format_s(va_list ap, t_flags *f)
 	len = ft_strlen(str);
 	if (f->precision)
 		len = f->precision_value;
-	bwritten = justify_s(str, len, f);
+	bwritten = flag_handler_s(str, len, f);
 	return (bwritten);
 }
