@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 01:12:40 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:39:19 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,13 @@ int		f_format_per(va_list ap, t_flags *f);
 
 /* utils */
 int		f_putchar(int c);
-int		f_putnbr(long n, int bytes);
+int		f_putnbr(long n, int bytes, t_flags *f);
 int		f_putnbr_unsigned(unsigned long n, int bytes);
 int		get_digits(long n);
 int		get_digits_unsigned(unsigned long n);
-int		ft_putnbr_base(unsigned long nbr, char *base, int bytes);
+int		f_putnbr_base(unsigned long nbr, int bytes, t_flags *f);
 int		get_digits_base(unsigned long n, int base);
+int		f_putstr(char *str);
 
 /* flag utils */
 void	map_conv_spec(char specifier, t_flags *f);
@@ -100,6 +101,6 @@ int		map_flags(const char *str, t_flags *f);
 /* format utils */
 int		pad_char(char c, int bytes);
 
-int	size_of_string(char *str, t_flags *f);
+int		size_of_string(char *str, t_flags *f);
 
 #endif

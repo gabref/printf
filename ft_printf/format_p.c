@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:13:37 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/10 00:12:23 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:42:30 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 int	justify_p(unsigned long pv, int len, t_flags *f)
 {
+	int bwritten = 0;
 	if (f->left_justify)
 	{
-		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(pv, HEX_BASE_LOWERCASE, len - 2);
-		pad_char(' ', f->width - len);
+		bwritten += f_putnbr_base(pv, len - 2, f);
+		bwritten += pad_char(' ', f->width - len);
 	}
 	else
 	{
-		pad_char(' ', f->width - len);
-		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(pv, HEX_BASE_LOWERCASE, len - 2);
+		bwritten += pad_char(' ', f->width - len);
+		bwritten += f_putnbr_base(pv, len - 2, f);
 	}
-	if (len < f->width)
-		return (f->width);
-	return (len);
+	return (bwritten);
 }
 
 int	f_format_p(va_list ap, t_flags *f)
@@ -44,6 +41,7 @@ int	f_format_p(va_list ap, t_flags *f)
 		ft_putstr_fd("(nil)", 1);
 		return (5);
 	}
+	f->hash = 1;
 	p_value = (unsigned long)p;
 	len = get_digits_base(p_value, 16) + 2;
 	bwritten = justify_p(p_value, len, f);
