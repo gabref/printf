@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/10 00:35:20 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 01:06:50 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,10 @@ void	test_s(void)
 	assert(e, r);
 	r = ft_printf(" %.2s %.3s %.4s %.5s %.1s \n", " - ", "", "4", "", "2 ");
 	e = printf(" %.2s %.3s %.4s %.5s %.1s \n", " - ", "", "4", "", "2 ");
+	assert(e, r);
+
+	r = ft_printf("hello %10.5s \n", "gabriel");
+	e = printf("hello %10.5s \n", "gabriel");
 	assert(e, r);
 }
 

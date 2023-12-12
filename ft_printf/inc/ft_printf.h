@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/10 00:23:34 by galves-f         ###   ########.fr       */
+/*   Updated: 2023/12/12 01:12:40 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ int		map_flags(const char *str, t_flags *f);
 
 /* format utils */
 int		pad_char(char c, int bytes);
+
+int	size_of_string(char *str, t_flags *f);
 
 #endif
