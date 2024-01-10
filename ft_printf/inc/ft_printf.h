@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 14:46:24 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:56:48 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 # define H_INT_MIN -2147483648L
 # define H_LONG_MIN 9223372036854775808UL
 # define H_ULONG_MAX 18446744073709551615UL
+
+# ifdef __APPLE__
+#  define NIL_STRING "0x0"
+# endif
+# ifdef __unix__
+#  define NIL_STRING "(nil)"
+# endif
 
 enum		e_format_spec
 {

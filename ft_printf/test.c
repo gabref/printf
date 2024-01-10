@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:35:22 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 11:47:39 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:54:15 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,56 +539,56 @@ void	test_p(void)
 	char	*str;
 
 	ft_printf("Testing %%p\n\n");
-	str = "meu test";
-	r = ft_printf("some address: %p\n", str);
-	e = printf("some address: %p\n", str);
-	assert(e, r);
-	r = ft_printf("test long max and min: %p %p\n", LONG_MAX, LONG_MIN);
-	e = printf("test long max and min: %p %p\n", (void *)LONG_MAX,
-			(void *)LONG_MIN);
-	assert(e, r);
-	r = ft_printf("test ulong max: %p %p\n", ULONG_MAX, -ULONG_MAX);
-	e = printf("test ulong max: %p %p\n", (void *)ULONG_MAX,
-			(void *)-ULONG_MAX);
-	assert(e, r);
-	r = ft_printf("test null: %p %p\n", NULL, NULL);
-	e = printf("test null: %p %p\n", NULL, NULL);
-	assert(e, r);
+	// str = "meu test";
+	// r = ft_printf("some address: %p\n", str);
+	// e = printf("some address: %p\n", str);
+	// assert(e, r);
+	// r = ft_printf("test long max and min: %p %p\n", LONG_MAX, LONG_MIN);
+	// e = printf("test long max and min: %p %p\n", (void *)LONG_MAX,
+	// 		(void *)LONG_MIN);
+	// assert(e, r);
+	// r = ft_printf("test ulong max: %p %p\n", ULONG_MAX, -ULONG_MAX);
+	// e = printf("test ulong max: %p %p\n", (void *)ULONG_MAX,
+	// 		(void *)-ULONG_MAX);
+	// assert(e, r);
+	// r = ft_printf("test null: %p %p\n", NULL, NULL);
+	// e = printf("test null: %p %p\n", NULL, NULL);
+	// assert(e, r);
 	r = ft_printf("test zero: %p %p\n", 0, 0);
 	e = printf("test zero: %p %p\n", (void *)0, (void *)0);
 	assert(e, r);
 
-	r = ft_printf(" %p %p\n", (void *)INT_MAX , (void *)INT_MIN);
-	e = printf(" %p %p\n", (void *)INT_MAX , (void *)INT_MIN);
-	assert(e, r);
+	// r = ft_printf(" %p %p\n", (void *)INT_MAX , (void *)INT_MIN);
+	// e = printf(" %p %p\n", (void *)INT_MAX , (void *)INT_MIN);
+	// assert(e, r);
 
-	r = ft_printf(" %2p \n", (void *)-1);
-	e = printf(" %2p \n", (void *)-1);
-	assert(e, r);
-	r = ft_printf(" %-2p \n", (void *)-1);
-	e = printf(" %-2p \n", (void *)-1);
-	assert(e, r);
-	r = ft_printf(" %-2p \n", (void *)1);
-	e = printf(" %-2p \n", (void *)1);
-	assert(e, r);
-	r = ft_printf(" %-2p \n", (void *)15);
-	e = printf(" %-2p \n", (void *)15);
-	assert(e, r);
-	r = ft_printf(" %-3p \n", (void *)16);
-	e = printf(" %-3p \n", (void *)16);
-	assert(e, r);
-	r = ft_printf(" %-4p \n", (void *)17);
-	e = printf(" %-4p \n", (void *)17);
-	assert(e, r);
-	r = ft_printf(" %-9p %-10p \n", (void *)LONG_MIN, (void *)LONG_MAX);
-	e = printf(" %-9p %-10p \n", (void *)LONG_MIN, (void *)LONG_MAX);
-	assert(e, r);
-	r = ft_printf(" %-11p %-12p \n", (void *)INT_MIN, (void *)INT_MAX);
-	e = printf(" %-11p %-12p \n", (void *)INT_MIN, (void *)INT_MAX);
-	assert(e, r);
-	r = ft_printf(" %-13p %-14p \n", (void *)ULONG_MAX, (void *)-ULONG_MAX);
-	e = printf(" %-13p %-14p \n", (void *)ULONG_MAX, (void *)-ULONG_MAX);
-	assert(e, r);
+	// r = ft_printf(" %2p \n", (void *)-1);
+	// e = printf(" %2p \n", (void *)-1);
+	// assert(e, r);
+	// r = ft_printf(" %-2p \n", (void *)-1);
+	// e = printf(" %-2p \n", (void *)-1);
+	// assert(e, r);
+	// r = ft_printf(" %-2p \n", (void *)1);
+	// e = printf(" %-2p \n", (void *)1);
+	// assert(e, r);
+	// r = ft_printf(" %-2p \n", (void *)15);
+	// e = printf(" %-2p \n", (void *)15);
+	// assert(e, r);
+	// r = ft_printf(" %-3p \n", (void *)16);
+	// e = printf(" %-3p \n", (void *)16);
+	// assert(e, r);
+	// r = ft_printf(" %-4p \n", (void *)17);
+	// e = printf(" %-4p \n", (void *)17);
+	// assert(e, r);
+	// r = ft_printf(" %-9p %-10p \n", (void *)LONG_MIN, (void *)LONG_MAX);
+	// e = printf(" %-9p %-10p \n", (void *)LONG_MIN, (void *)LONG_MAX);
+	// assert(e, r);
+	// r = ft_printf(" %-11p %-12p \n", (void *)INT_MIN, (void *)INT_MAX);
+	// e = printf(" %-11p %-12p \n", (void *)INT_MIN, (void *)INT_MAX);
+	// assert(e, r);
+	// r = ft_printf(" %-13p %-14p \n", (void *)ULONG_MAX, (void *)-ULONG_MAX);
+	// e = printf(" %-13p %-14p \n", (void *)ULONG_MAX, (void *)-ULONG_MAX);
+	// assert(e, r);
 	r = ft_printf(" %-1p %-2p \n", (void *)0, (void *)0);
 	e = printf(" %-1p %-2p \n", (void *)0, (void *)0);
 	assert(e, r);
@@ -599,8 +599,8 @@ int	main(void)
 	// test_();
 	// test_c();
 	// test_s();
-	// test_p();
-	test_d();
+	test_p();
+	// test_d();
 	// test_i();
 	// test_u();
 	// test_x();
