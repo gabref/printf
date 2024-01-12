@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 12:56:39 by galves-f          #+#    #+#             */
-/*   Updated: 2023/11/05 13:23:19 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:55:29 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ static int	count_words(char *str, char c)
 	return (words);
 }
 
-char	**ft_split(char const *s, char c)
+static void	fill(const char *s, char c, char **splitted, int words)
 {
-	int		words;
-	char	**splitted;
-	int		c_word;
-	int		start;
-	int		end;
+	int	start;
+	int	end;
+	int	c_word;
 
-	words = count_words((char *)s, c);
-	splitted = (char **)malloc(sizeof(char *) * (words + 1));
 	c_word = 0;
 	start = 0;
 	end = 0;
@@ -51,9 +47,22 @@ char	**ft_split(char const *s, char c)
 		end = start + 1;
 		while (s[end] && s[end] != c)
 			end++;
-		splitted[c_word] = ft_substr((const char *)s, start, end - start);
-		c_word++;
+		splitted[c_word++] = ft_substr((const char *)s, start, end - start);
 	}
 	*(splitted + c_word) = NULL;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		words;
+	char	**splitted;
+
+	if (s == NULL)
+		return (NULL);
+	words = count_words((char *)s, c);
+	splitted = (char **)malloc(sizeof(char *) * (words + 1));
+	if (splitted == NULL)
+		return (NULL);
+	fill(s, c, splitted, words);
 	return (splitted);
 }

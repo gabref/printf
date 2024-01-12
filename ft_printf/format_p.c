@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:13:37 by galves-f          #+#    #+#             */
-/*   Updated: 2024/01/10 10:57:06 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:05:11 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ int	f_format_p(va_list ap, t_flags *f)
 
 	p = va_arg(ap, void *);
 	if (p == NULL)
-		return (f_putstr(NIL_STRING));
+	{
+		len = ft_strlen(NIL_STRING);
+		if (f->precision)
+			len = f->precision_value;
+		return (flag_handler_s(NIL_STRING, len, f));
+	}
 	f->hash = 1;
 	p_value = (unsigned long)p;
 	len = get_digits_base(p_value, 16) + 2;

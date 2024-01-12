@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:02:32 by galves-f          #+#    #+#             */
-/*   Updated: 2023/11/03 17:19:09 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:55:38 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
-		if (*s++ == c)
+		if (*s++ == (char) c)
 			return ((char *)--s);
-	if (*s == c)
+	if (*s == (char) c)
 		return ((char *)s);
 	return (NULL);
 }

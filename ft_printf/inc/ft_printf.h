@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2024/01/10 10:56:48 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:11:18 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define H_INT_MIN -2147483648L
 # define H_LONG_MIN 9223372036854775808UL
 # define H_ULONG_MAX 18446744073709551615UL
+# define NULL_STRING "(null)"
 
 # ifdef __APPLE__
 #  define NIL_STRING "0x0"
@@ -116,5 +117,6 @@ int			map_flags(const char *str, t_flags *f);
 int			flag_handler_number(long n, int len, t_flags *f, t_pn pn);
 void		map_conv_spec(char specifier, t_flags *f);
 void		start_flags(t_flags *f);
+int			flag_handler_s(char *str, int len, t_flags *f);
 
 #endif

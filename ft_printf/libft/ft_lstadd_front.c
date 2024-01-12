@@ -6,14 +6,16 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 23:54:27 by galves-f          #+#    #+#             */
-/*   Updated: 2023/11/05 23:59:12 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:55:00 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *newn)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	newn->next = *lst;
-	*lst = newn;
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
