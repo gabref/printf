@@ -6,13 +6,12 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:25:42 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 13:03:06 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:56:57 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 /*
    left_justify 	= '-'

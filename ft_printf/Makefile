@@ -6,13 +6,13 @@
 #    By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 20:27:50 by galves-f          #+#    #+#              #
-#    Updated: 2023/12/12 11:33:53 by galves-f         ###   ########.fr        #
+#    Updated: 2024/02/11 19:25:11 by galves-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -ggdb
+# CFLAGS = -Wall -Wextra -Werror -ggdb
 # -g -O3
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
@@ -29,6 +29,7 @@ SRCS = ft_printf.c \
 		utils_flag.c \
 		utils_format.c \
 		utils_nbr_base.c \
+		utils_nbr_digits.c \
 		utils_flags_handler.c \
 		format_per.c
 OBJS = $(SRCS:.c=.o)

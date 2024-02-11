@@ -6,45 +6,51 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:30:43 by galves-f          #+#    #+#             */
-/*   Updated: 2023/12/12 12:20:40 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:23:52 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-int	get_digits(long n)
+char	*ft_uitoa(unsigned int nbr)
 {
-	int	digits;
+	char			*result;
+	int				len;
+	unsigned int	aux;
 
-	digits = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	len = 1;
+	aux = nbr;
+	while (aux / 10 != 0 && len++)
+		aux = aux / 10;
+	result = malloc(sizeof(char) * (len + 1));
+	if (result == NULL)
+		return (NULL);
+	result[len] = '\0';
+	while (len-- != 0)
 	{
-		n *= -1;
-		digits++;
+		result[len] = nbr % 10 + '0';
+		nbr /= 10;
 	}
-	while (n)
-	{
-		n /= 10;
-		digits++;
-	}
-	return (digits);
+	return (result);
 }
 
-int	get_digits_unsigned(unsigned long n)
+int	handle_signs(long *n, t_flags *f)
 {
-	int	digits;
+	int	count;
 
-	digits = 0;
-	if (n == 0)
-		return (1);
-	while (n)
+	count = 0;
+	if (n == NULL)
+		return (count);
+	if (f->space && *n >= 0)
+		count += f_putchar(' ');
+	else if (f->plus && *n >= 0)
+		count += f_putchar('+');
+	if (*n < 0)
 	{
-		n /= 10;
-		digits++;
+		count += f_putchar('-');
+		*n *= -1;
 	}
-	return (digits);
+	return (count);
 }
 
 int	f_putnbr(long n, int bytes, t_flags *f)
@@ -52,23 +58,19 @@ int	f_putnbr(long n, int bytes, t_flags *f)
 	int		count;
 	char	*nstr;
 	int		i;
+	int		digits;
 
 	i = 0;
 	count = 0;
+	digits = get_digits(n);
 	if (n == H_INT_MIN)
 		i++;
-	if (f->space && n >= 0)
-		count += f_putchar(' ');
-	else if (f->plus && n >= 0)
-		count += f_putchar('+');
-	if (n < 0)
-	{
-		count += f_putchar('-');
-		n *= -1;
-		bytes--;
-	}
-	count += pad_char('0', bytes - get_digits(n));
-	nstr = ft_itoa(n);
+	count += handle_signs(&n, f);
+	if (f->precision && f->precision_value == 0 && n == 0)
+		nstr = ft_strdup("");
+	else
+		nstr = ft_itoa(n);
+	count += pad_char('0', bytes - digits);
 	count += f_putstr(&nstr[i]);
 	free(nstr);
 	return (count);
@@ -77,14 +79,25 @@ int	f_putnbr(long n, int bytes, t_flags *f)
 int	f_putnbr_unsigned(long n, int bytes, t_flags *f)
 {
 	int				count;
+	char			*nstr;
+	int				i;
 	unsigned long	uln;
+	int				digits;
 
-	(void)f;
 	uln = (unsigned long)n;
+	i = 0;
 	count = 0;
-	count += pad_char('0', bytes - get_digits_unsigned(uln));
-	if (uln > 9)
-		count += f_putnbr_unsigned(uln / 10, 0, f);
-	count += f_putchar(uln % 10 + 0x30);
+	digits = get_digits_unsigned(uln);
+	if (f->space)
+		count += f_putchar(' ');
+	else if (f->plus)
+		count += f_putchar('+');
+	if (f->precision && f->precision_value == 0 && uln == 0)
+		nstr = ft_strdup("");
+	else
+		nstr = ft_uitoa(uln);
+	count += pad_char('0', bytes - digits);
+	count += f_putstr(&nstr[i]);
+	free(nstr);
 	return (count);
 }
