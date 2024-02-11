@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:22:07 by galves-f          #+#    #+#             */
-/*   Updated: 2024/01/12 13:07:46 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/02/11 15:20:03 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ int	f_format_s(va_list ap, t_flags *f)
 	if (str == NULL)
 	{
 		len = ft_strlen(NULL_STRING);
-		if (f->precision)
-			len = f->precision_value;
+		if (f->precision  && f->precision_value < len)
+			return (ft_printf(""));
 		return (flag_handler_s(NULL_STRING, len, f));
 	}
 	len = ft_strlen(str);
-	if (f->precision)
+	if (f->precision && f->precision_value < len)
 		len = f->precision_value;
 	bwritten = flag_handler_s(str, len, f);
 	return (bwritten);
