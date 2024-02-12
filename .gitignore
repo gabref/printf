@@ -1,3 +1,4 @@
 *.o
 printfTester
-
+objs
+*.a

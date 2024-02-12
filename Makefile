@@ -6,7 +6,7 @@
 #    By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/01 20:31:25 by galves-f          #+#    #+#              #
-#    Updated: 2024/02/12 11:23:26 by galves-f         ###   ########.fr        #
+#    Updated: 2024/02/12 20:12:29 by galves-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,15 +100,11 @@ endif
 ifeq ($(detected_OS),Darwin) 
 	RUN_CMD = script -q $@.log $1 > /dev/null; \
 				RESULT=$$?
-	INCLUDE_MLX = -I/opt/X11/include -I$(MLX_DIR)
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
 else ifeq ($(detected_OS),Linux)
 	RUN_CMD = script -q -e -c "$(1)" $@.log > /dev/null; \
 				RESULT=$$?; \
 				sed -i '1d' $@.log; \
 				sed -i "$$(($$(wc -l < $@.log)-1)),\$$d" $@.log
-	INCLUDE_MLX = -I/usr/include -I$(MLX_DIR)
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
 else
 	RUN_CMD = $(1) 2> $@.log; \
 				RESULT=$$?
