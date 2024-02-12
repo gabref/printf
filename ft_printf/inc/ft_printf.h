@@ -6,7 +6,7 @@
 /*   By: galves-f <galves-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:28:04 by galves-f          #+#    #+#             */
-/*   Updated: 2024/02/11 19:32:29 by galves-f         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:54:25 by galves-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@
 
 # ifdef __APPLE__
 #  define NIL_STRING "0x0"
+#  define IS_LINUX 0
 # endif
 # ifdef __unix__
 #  define NIL_STRING "(nil)"
+#  define IS_LINUX 1
 # endif
 
 enum		e_format_spec
